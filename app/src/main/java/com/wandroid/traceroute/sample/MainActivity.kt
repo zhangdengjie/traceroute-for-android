@@ -17,8 +17,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-//        val traceRoute = TraceRoute.traceRoute(arrayOf("traceroute", "--help"))
-
         text = findViewById(R.id.sample_text)
         result = findViewById(R.id.result)
 
@@ -48,7 +46,11 @@ class MainActivity : AppCompatActivity() {
             update { text -> result.append(text) }
             failed { code, reason -> result.append("""\ntraceroute failed.code:$code, reason:$reason""") }
         }
-        TraceRoute.traceRoute(text.text.toString(), true)
-    }
+//        TraceRoute.traceRoute(text.text.toString(), true)
+        Thread {
+            TraceRoute.traceRoute(arrayOf("traceroute", "117.64.76.121","-l 4"))
+//            TraceRoute.traceRoute(arrayOf("traceroute", "117.64.76.121"))
+        }.start()
 
+    }
 }
