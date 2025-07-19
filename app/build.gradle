@@ -31,3 +31,7 @@ dependencies {
 
     implementation project(':library')
 }
+
+project.afterEvaluate {
+    println("使用ndk版本 ${android.getNdkDirectory().absolutePath}")
+}

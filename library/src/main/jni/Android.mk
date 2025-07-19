@@ -33,6 +33,8 @@ LOCAL_SRC_FILES := $(MY_C_LIST:$(LOCAL_PATH)/%=%)
 #兼容5.0+
 LOCAL_CFLAGS += -fPIE -fPIC
 LOCAL_LDFLAGS += -fPIE -pie
+LOCAL_LDFLAGS += "-Wl,-z,max-page-size=16384"
+LOCAL_LDFLAGS += "-Wl,-z,common-page-size=16384"
 
 # 编译为可执行的文件
 # include $(BUILD_EXECUTABLE)
